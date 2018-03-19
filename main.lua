@@ -3,7 +3,7 @@ FILLHEIGHT = love.graphics.getHeight()
 love.graphics.setDefaultFilter( "linear", "linear", 2 )
 items = {}
 imgsend = love.graphics.newImage("send.png")
-require("colors")
+require("colors") 
 require("graphics")
 require("text")
 require("font")
