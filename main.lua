@@ -3,23 +3,38 @@ FILLHEIGHT = love.graphics.getHeight()
 love.graphics.setDefaultFilter( "linear", "linear", 2 )
 items = {}
 imgsend = love.graphics.newImage("send.png")
-require("colors") 
+require("colors")
 require("graphics")
 require("text")
 require("font")
 require("mathing")
 
+--draw_l_textbox pos jenny_name jenny_text jenny_pic
+--draw_r_textbox pos jenny_name jenny_text jenny_pic
+--draw_img_r_textbox pos jenny_name text_pic jenny_pic
+--draw_img_l_textbox pos jenny_name text_pic jenny_pic
+
 function love.draw()
     draw_bg() -- BG COLOR
     draw_info_bar(0, text.title) -- What chat app is this?
+
     -- Jenny Chats here
-    draw_l_textbox(1, text.jenny1, text.jenny1text, 1)
-    draw_r_textbox(2, "Marge Jenny", "I AM GOING TO KEEP TALKING AND THERE IS NOTHING YOU CAN DO ABOUT IT. I AM THE GOD OF THIS WORLD, YOU HEAR ME? YOU HEAR MEEEEEEE?", 2)
-    draw_img_l_textbox(3, "Marge Jenny", 1, 2)
-    draw_img_r_textbox(4, "Jijjojivoji WaJenny", 2, 2)
-    draw_l_textbox(5, text.jenny1, text.jenny1text, 1)
+
+    draw_l_textbox(1, "Angela Jenny", "Doggo picture time!", 20)
+
+    draw_img_r_textbox(2, "Angela Jenny", 3, 20)
+
+    draw_img_r_textbox(3, "Annie Jenny", 2, 7)
+
+    draw_l_textbox(4, "Angela Jenny", "Oh! Peaches' eggs hatched! They already look regal.", 20)
+
+    draw_img_r_textbox(5, "Annie Jenny", 4, 7)
+
+    draw_l_textbox(6, "Angela Jenny", "Aww!", 20)
+
     -- End Jenny Chats
-    draw_bottom_bar("What the heck happened?")-- Draw message bar on bottom
+
+    draw_bottom_bar(" ")-- Draw message bar on bottom
     checkstatus()
 end
 
@@ -33,7 +48,7 @@ function draw_info_bar(itemnum, itemtext)
     local posx = 0
     local posy = findheight(itemnum)
 
-    local ifbheight = FILLHEIGHT/10 -- Bar is 1/10th of the screen big
+    local ifbheight = FILLHEIGHT/15 -- Bar is 1/10th of the screen big
     local ifbwidth = FILLWIDTH -- covers the whole width
 
     love.graphics.setFont(bold_font)
@@ -243,26 +258,8 @@ function draw_img_l_textbox(itemnum, jennyname, itempic, jennypic)
     love.graphics.rectangle("line", textboxx , textboxy, textboxw, textboxh, textboxr)
         -- NAME
         love.graphics.setFont(name_font)
-        color(COLOR.WHITE)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 2, math.ceil(textboxy + 4))
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 2, math.ceil(textboxy + 4))
-        love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4) - 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4) + 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 2, math.ceil(textboxy + 4) + 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 2, math.ceil(textboxy + 4) + 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 2, math.ceil(textboxy + 4) - 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 2, math.ceil(textboxy + 4) - 2)
-        color(COLOR.BLACK)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 1, math.ceil(textboxy + 4))
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 1, math.ceil(textboxy + 4))
-        love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4) - 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4) + 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 1, math.ceil(textboxy + 4) + 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 1, math.ceil(textboxy + 4) + 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 1, math.ceil(textboxy + 4) - 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 1, math.ceil(textboxy + 4) - 1)
 
-        color(COLOR.WHITE)
+        color({255,255,255,100})
         love.graphics.rectangle("fill", math.ceil(textboxx + 8) - 2, math.ceil(textboxy + 4) , name_font:getWidth(jennyname) + 4, name_font:getHeight() + 2, 2)
         color(COLOR.TITLE)
         love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4))
@@ -326,26 +323,8 @@ function draw_img_r_textbox(itemnum, jennyname, itempic, jennypic)
     love.graphics.rectangle("line", textboxx , textboxy, textboxw, textboxh, textboxr)
         -- NAME
         love.graphics.setFont(name_font)
-        color(COLOR.WHITE)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 2, math.ceil(textboxy + 4))
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 2, math.ceil(textboxy + 4))
-        love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4) - 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4) + 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 2, math.ceil(textboxy + 4) + 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 2, math.ceil(textboxy + 4) + 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 2, math.ceil(textboxy + 4) - 2)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 2, math.ceil(textboxy + 4) - 2)
-        color(COLOR.BLACK)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 1, math.ceil(textboxy + 4))
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 1, math.ceil(textboxy + 4))
-        love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4) - 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4) + 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 1, math.ceil(textboxy + 4) + 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 1, math.ceil(textboxy + 4) + 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) - 1, math.ceil(textboxy + 4) - 1)
-        love.graphics.print(jennyname, math.ceil(textboxx + 8) + 1, math.ceil(textboxy + 4) - 1)
 
-        color(COLOR.WHITE)
+        color({255,255,255,100})
         love.graphics.rectangle("fill", math.ceil(textboxx + 8) - 2, math.ceil(textboxy + 4) , name_font:getWidth(jennyname) + 4, name_font:getHeight() + 2, 2)
         color(COLOR.TITLE)
         love.graphics.print(jennyname, math.ceil(textboxx + 8), math.ceil(textboxy + 4))
@@ -389,7 +368,7 @@ function draw_bottom_bar(itemtext) -- This has scaling issues but I don't care e
         love.graphics.setColor(COLOR.TITLE) -- set color to our known color type
         love.graphics.setFont(name_font)
         love.graphics.print("+", posx + 10 + ifbwidth - 105, posy+ifobpadding/2 - 4)
-        love.graphics.setFont(button_font)
+        love.graphics.setFont(name_font)
     resetColor()
             love.graphics.draw(imgsend, posx + 10 + ifbwidth - 60, posy+ifobpadding/2 - 7)
 end
